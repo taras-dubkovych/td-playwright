@@ -2,7 +2,7 @@ services:
   playwright-test:
     image: playwright
     build: .
-    container_name: playwright_docker
+    container_name: playwright-test
     volumes:
       - ./:/app
     command: npm run test
