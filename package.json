@@ -10,7 +10,8 @@
     "pretest": "npm run clean:reports",
     "posttest": "npm run generate:reports && npm run open:reports",
     "execute:script": "npx playwright test --project=chromium",
-    "test": "npm run execute:script || npm run posttest"
+    "test": "npm run execute:script || npm run posttest",
+    "rimraf": "./node_modules/rimraf/bin.js"
   },
   "keywords": [],
   "author": "Taras Dubkovych",
