@@ -5,7 +5,7 @@ pipeline {
 
         stage ('Docker'){
             steps{
-                sh 'docker-compose -f docker-compose.yaml up .'
+                sh 'docker build -t td-playwright .'
             }
         }
 
