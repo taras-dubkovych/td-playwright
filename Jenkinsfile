@@ -29,7 +29,7 @@ pipeline {
             archiveArtifacts artifacts: '**/allure-results', allowEmptyArchive: true
 
             // Stop and remove the container after tests are complete
-            sh 'docker-compose down'
+            sh 'docker compose down'
         }
     }
 }

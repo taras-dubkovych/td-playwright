@@ -4,7 +4,7 @@
   "description": "<!-- To start a new Playwright project -->\r npm init playwright@latest",
   "main": "index.js",
   "scripts": {
-    "clean:reports": "npm i -g rimraf && rimraf allure-report allure-results && mkdirp allure-report allure-results",
+    "clean:reports": "rimraf allure-report allure-results && mkdirp allure-report allure-results",
     "generate:reports": "npx allure generate ./allure-results --clean",
     "open:reports": "npx allure open ./allure-report",
     "pretest": "npm run clean:reports",
