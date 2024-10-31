@@ -11,7 +11,7 @@ COPY . /app
 RUN apt-get update && \
     apt-get install -y openjdk-11-jre-headless && \
     npm install -g rimraf && \
-    npm install mkdirp@latest && \
+    npm install -g mkdirp && \
     npm install
  
 # Set environment variables or additional configuration if needed
