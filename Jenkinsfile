@@ -16,6 +16,7 @@ pipeline {
                 script {
                     // Run Docker Compose to start the container and execute the tests
                     sh 'ls -la'
+                    sh 'docker compose version'
                     sh 'docker-compose up . --abort-on-container-exit'
                 }
             }
