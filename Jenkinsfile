@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image using the Dockerfile
-                    sh 'docker build -t playwright-test .'
+                    sh 'docker build -t playwright-test-image .'
                 }
             }
         }
