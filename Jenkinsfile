@@ -26,7 +26,13 @@ pipeline {
     post {
         always {
             // Archive test results for reporting, if available
-            archiveArtifacts artifacts: '**/allure-results', allowEmptyArchive: true
+            publishHTML (target : [allowMissing: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'allure-report',
+            reportFiles: 'index.html',
+            reportName: 'HTML Report',
+            reportTitles: 'HTML Report'])
 
             // Stop and remove the container after tests are complete
             sh 'docker compose down'
