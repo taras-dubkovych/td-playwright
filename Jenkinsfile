@@ -12,7 +12,7 @@ pipeline {
         stage('Run Tests') {
            agent {
             docker{
-                image 'my-docker'
+                image 'td-playwright'
                 reuseNode true
             }
            }
