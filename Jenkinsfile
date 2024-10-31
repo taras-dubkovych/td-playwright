@@ -2,29 +2,32 @@ pipeline {
     agent any
 
     stages {
-
-        stage ('Docker'){
-            steps{
-                sh 'docker build -t td-playwright .'
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile
+                    sh 'docker build -t playwright-test .'
+                }
             }
         }
 
-        stage('Run Tests') {
-           agent {
-            docker{
-                image 'td-playwright'
-                reuseNode true
-            }
-           }
+        stage('Run Tests in Docker Container') {
             steps {
-                sh 'npm test'
+                script {
+                    // Run Docker Compose to start the container and execute the tests
+                    sh 'docker-compose up --abort-on-container-exit'
+                }
             }
         }
     }
 
     post {
         always {
+            // Archive test results for reporting, if available
             archiveArtifacts artifacts: '**/allure-results', allowEmptyArchive: true
+
+            // Stop and remove the container after tests are complete
+            sh 'docker-compose down'
         }
     }
 }

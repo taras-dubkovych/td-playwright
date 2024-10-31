@@ -10,10 +10,11 @@ COPY . /app
 # Install Java and other dependencies
 RUN apt-get update && \
     apt-get install -y openjdk-11-jre-headless && \
-    npm install
+    npm install\
+    ls
  
 # Set environment variables or additional configuration if needed
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
  
 # Command to run your Playwright tests
-CMD ["npm", "test"]
+CMD ["npm", "test", "sh"]
