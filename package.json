@@ -1,6 +1,7 @@
 {
   "name": "td-playwright",
   "version": "1.0.0",
+  "type": "module",
   "description": "<!-- To start a new Playwright project -->\r npm init playwright@latest",
   "main": "index.js",
   "scripts": {
@@ -9,21 +10,25 @@
     "open:reports": "npx allure open ./allure-report",
     "pretest": "npm run clean:reports",
     "posttest": "npm run generate:reports ",
-    "execute:script": "npx playwright test --project=chromium",
+    "execute:script": "npx playwright test --project=chromium --workers=2",
     "test": "npm run execute:script || npm run posttest"
   },
   "keywords": [],
   "author": "Taras Dubkovych",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.14.0",
     "@playwright/test": "^1.48.2",
     "@types/luxon": "^3.3.1",
     "@types/node": "^22.8.4",
     "allure-commandline": "^2.32.0",
     "allure-playwright": "^2.15.1",
     "csv-parse": "^5.5.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.11.0",
     "luxon": "^3.3.0",
     "mkdirp": "^3.0.1",
-    "rimraf": "^5.0.1"
+    "rimraf": "^5.0.10",
+    "typescript-eslint": "^8.12.2"
   }
 }
