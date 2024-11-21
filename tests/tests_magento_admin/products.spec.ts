@@ -3,9 +3,12 @@ import { AdminLoginPage } from '../../src/src_magento_admin/pages/adminLoginPage
 import { ProductsPage } from '../../src/src_magento_admin/pages/productsPage';
 import { LeftBarMenu } from '../../src/src_magento_admin/pages/leftBarMenu';
 import { config } from '../../src/src_magento_admin/utils/config';
+import { Logger } from '../../src/src_magento_admin/helpers/logger';
 
 test.describe('Products Management', () => {
   test.beforeEach(async ({ page }) => {
+    // Attach logger
+    Logger.attach(page);
     const loginPage = new AdminLoginPage(page);
     await loginPage.navigateToLogin();
     await loginPage.login(config.admin.username, config.admin.password);
