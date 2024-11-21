@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { AdminLoginPage } from '../../src/pages/adminLoginPage';
-import { config } from '../../src/utils/config';
+import { AdminLoginPage } from '../../src/src_magento_admin/pages/adminLoginPage';
+import { config } from '../../src/src_magento_admin/utils/config';
 
 test.describe('Admin Login Tests', () => {
   test('Should log in successfully', async ({ page }) => {

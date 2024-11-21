@@ -1,5 +1,4 @@
 import { Page } from '@playwright/test';
-import { config } from '../../src/utils/config';
 
 export class AdminLoginPage {
   private page: Page;

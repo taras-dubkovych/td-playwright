@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
-import { AdminLoginPage } from '../../src/pages/adminLoginPage';
-import { OrdersPage } from '../../src/pages/ordersPage';
-import { config } from '../../src/utils/config';
+import { AdminLoginPage } from '../../src/src_magento_admin/pages/adminLoginPage';
+import { OrdersPage } from '../../src/src_magento_admin/pages/ordersPage';
+import { config } from '../../src/src_magento_admin/utils/config';
 
 test.describe('Orders Management', () => {
   test.beforeEach(async ({ page }) => {

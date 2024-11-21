@@ -7,18 +7,39 @@ export class ProductsPage {
     this.page = page;
   }
 
-  async navigateToProducts() {
-    await this.page.goto('/admin_ni2d8miur/admin/catalog/product');
+  async clickAddProductBtn(){
+    await this.page.click('button:has-text("Add Product")');
   }
 
-  async createSimpleProduct(productDetails: { name: string; price: string; sku: string }) {
-    await this.page.click('button:has-text("Add Product")');
+  async createSimpleProductOption(){
     await this.page.click('text=Simple Product');
+  }
+
+  async createVirtualProductOption(){
+    await this.page.click('text=Virtual Product');
+  }
+
+  async createConfigurableProductOption(){
+    await this.page.click('text=Configurable Product');
+  }
+
+  async fillInRequiredFields(productDetails: { name: string; price: string; sku: string }) {
+    await this.page.waitForLoadState();
     await this.page.fill('input[name="product[name]"]', productDetails.name);
     await this.page.fill('input[name="product[sku]"]', productDetails.sku);
     await this.page.fill('input[name="product[price]"]', productDetails.price);
+    await this.page.click('span:has-text("Prices")');
+    await this.page.fill('input[name="product[commission_for_product]"]', "0")
+   
+  }
+
+async productHasBeenCreated(){
+    await this.page.waitForLoadState();
+    await this.page.waitForSelector(`text=Test Product`);
+}
+
+  async clickSaveProductBtn(){
     await this.page.click('button:has-text("Save")');
-    await this.page.waitForSelector(`text=${productDetails.name}`);
   }
 
   async deleteProduct(productName: string) {
