@@ -1,7 +1,7 @@
 {
   "name": "td-playwright",
   "version": "1.0.0",
-  "type": "module",
+
   "description": "<!-- To start a new Playwright project -->\r npm init playwright@latest",
   "main": "index.js",
   "scripts": {
@@ -11,12 +11,14 @@
     "pretest": "npm run clean:reports",
     "posttest": "npm run generate:reports ",
     "execute:script": "npx playwright test --project=chromium --workers=2",
-    "test": "npm run execute:script || npm run posttest"
+    "test": "npm run execute:script || npm run posttest",
+    "testC": "cucumber-js test"
   },
   "keywords": [],
   "author": "Taras Dubkovych",
   "license": "ISC",
   "devDependencies": {
+    "@cucumber/cucumber": "^11.1.0",
     "@eslint/js": "^9.14.0",
     "@playwright/test": "^1.48.2",
     "@types/luxon": "^3.3.1",
@@ -29,6 +31,10 @@
     "luxon": "^3.3.0",
     "mkdirp": "^3.0.1",
     "rimraf": "^5.0.10",
+    "ts-node": "^10.9.2",
     "typescript-eslint": "^8.12.2"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
   }
 }
