@@ -1,9 +1,11 @@
 import { Page } from '@playwright/test';
+import { BasePage } from "../BasePage";
 
-export class CustomersPage {
-  private page: Page;
+export class CustomersPage extends BasePage  {
+  readonly page: Page;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
   }
 

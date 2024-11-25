@@ -1,14 +1,13 @@
 import { Given, When, Then } from "@cucumber/cucumber";
-import { chromium, Browser, Page, expect } from "@playwright/test";
-import { AdminLoginPage } from '../../pages/adminLoginPage';
+//import { chromium, Browser, Page, expect } from "@playwright/test";
+import { AdminLoginPage } from '../../pages/magento_admin/AdminLoginPage';
 import { config } from '../..//utils/config';
+import { pageFixture } from "../../hooks/pageFixture";
 
-let browser: Browser;
-let page: Page;
-
+let adminLoginPage: AdminLoginPage;
 
 Given('I am on the marketplace login page', async function () {
-    const adminLoginPage = new AdminLoginPage(page);
+    adminLoginPage = new AdminLoginPage(pageFixture.page);
     await adminLoginPage.navigateToLogin();
     await adminLoginPage.login(config.admin.username, config.admin.password);
 });

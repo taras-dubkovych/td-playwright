@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
 
 export abstract class BasePage {
-  protected testController;
-  abstract initElementLocators();
-  protected logger;
+  //protected testController;
+ // abstract initElementLocators();
+  //protected logger;
   
-  protected page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;

@@ -1,7 +1,6 @@
 {
   "name": "td-playwright",
   "version": "1.0.0",
-
   "description": "<!-- To start a new Playwright project -->\r npm init playwright@latest",
   "main": "index.js",
   "scripts": {

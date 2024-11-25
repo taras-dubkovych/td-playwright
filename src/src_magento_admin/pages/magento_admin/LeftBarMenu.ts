@@ -1,9 +1,11 @@
 import { Page } from '@playwright/test';
+import { BasePage } from "../BasePage";
 
-export class LeftBarMenu {
-  private page: Page;
+export class LeftBarMenu extends BasePage  {
+  readonly page: Page;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
   }
 
