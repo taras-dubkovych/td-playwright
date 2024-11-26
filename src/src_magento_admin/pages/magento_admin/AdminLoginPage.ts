@@ -26,7 +26,7 @@ export class AdminLoginPage extends BasePage {
   }
 
   async navigateToLogin() {
-    await this.page.goto('https://mcstaging.comave.com/admin_ni2d8miur/admin');
+    await this.navigateToUrl('https://mcstaging.comave.com/admin_ni2d8miur/admin');
   }
 
   async login(username: string, password: string) {

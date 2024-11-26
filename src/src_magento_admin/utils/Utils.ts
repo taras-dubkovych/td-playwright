@@ -1,5 +1,4 @@
-// import { BrowserContext } from '@playwright/test';
-// import fs from 'fs';
+import { pageFixture } from "../hooks/pageFixture";
 
 // const SESSION_FILE_PATH = './admin-session.json';
 
@@ -18,3 +17,13 @@
 // export const sessionExists = (): boolean => {
 //   return fs.existsSync(SESSION_FILE_PATH);
 // };
+
+export const clickAndSwitchToNewTab = async (selector: string) => {
+    const [newTab] = await Promise.all([
+        pageFixture.page.waitForEvent('popup'),
+        pageFixture.page.locator(selector).click(),
+    ]);
+
+    await newTab.waitForLoadState();
+    pageFixture.page = newTab; // Switch to the new tab
+}

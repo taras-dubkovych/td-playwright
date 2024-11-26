@@ -11,7 +11,7 @@
     "posttest": "npm run generate:reports ",
     "execute:script": "npx playwright test --project=chromium --workers=2",
     "test": "npm run execute:script || npm run posttest",
-    "testC": "cucumber-js test"
+    "testC": "cucumber-js test/features/magento_admin"
   },
   "keywords": [],
   "author": "Taras Dubkovych",
@@ -34,6 +34,8 @@
     "typescript-eslint": "^8.12.2"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "graphql-request": "^7.1.2",
     "reflect-metadata": "^0.2.2"
   }
 }

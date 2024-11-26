@@ -1,0 +1,14 @@
+{
+    "valid_user": {
+      "email": "tesic9577+mp1@gmail.com",
+      "password": "12345678aA$"
+    },
+    "invalid_user": {
+      "email": "###",
+      "password": "###"
+    },
+    "unregistered_user": {
+      "email": "unregistered_email@example.com",
+      "password": "password123"
+    }
+  }

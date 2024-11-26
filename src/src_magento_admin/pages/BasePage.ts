@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { Logger } from '../../src_magento_admin/helpers/Logger';
 
 export abstract class BasePage {
   //protected testController;
@@ -9,9 +10,10 @@ export abstract class BasePage {
 
   constructor(page: Page) {
     this.page = page;
+    Logger.attach(page);
   }
 
-  async navigateTo(url: string){
+  async navigateToUrl(url: string){
     await this.page.goto(url);
   }
 
