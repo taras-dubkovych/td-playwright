@@ -10,6 +10,6 @@
         ],
         "requireModule": ["ts-node/register"],
         "format": ["html:test_result/report/cucumber-report.html"],
-        "parallel": 2
+        "parallel": 1
     }
 }

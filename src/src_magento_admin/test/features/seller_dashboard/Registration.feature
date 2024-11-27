@@ -11,7 +11,7 @@ Feature: Register a new seller account
       | First_Name       | John              |
       | Last_Name        | Doe               |
       | Email            | john.doe@test.com |
-      | Shop_URL         | johndoe           |
+      | Shop_URL         | johndoe33           |
       | Password         | SecurePass123     |
     Then the fields accept the values
     When the user clicks the Next button

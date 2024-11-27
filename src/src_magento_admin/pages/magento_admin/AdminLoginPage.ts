@@ -1,28 +1,23 @@
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { BasePage } from "../BasePage";
 
 export class AdminLoginPage extends BasePage {
   readonly page: Page;
 
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly loginButton: Locator;
+  readonly logOutButton: Locator;
+
   constructor(page: Page) {
     super(page);
     this.page = page;
-  }
 
-  private get usernameInput() {
-    return this.page.locator('#username');
-  }
-
-  private get passwordInput() {
-    return this.page.locator('#login');
-  }
-
-  private get loginButton() {
-    return this.page.locator('button.action-login');
-  }
-
-  private get logOutButton() {
-    return this.page.locator('text=Dashboard');
+    // Ініціалізація селекторів у конструкторі
+    this.usernameInput = this.page.locator('#username');
+    this.passwordInput = this.page.locator('#login');
+    this.loginButton = this.page.locator('button.action-login');
+    this.logOutButton = this.page.locator('text=Dashboard');
   }
 
   async navigateToLogin() {

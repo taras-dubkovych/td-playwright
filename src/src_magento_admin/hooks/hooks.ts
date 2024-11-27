@@ -9,16 +9,17 @@ let context: BrowserContext;
 setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function () {
-    browser = await chromium.launch({headless:false});
+    console.log('Test suite initialization started');
+    browser = await chromium.launch({ headless: false });
+    console.log('Browser launched');
 })
 
 Before( async function () {
     context = await browser.newContext();
     page = await browser.newPage();
-    pageFixture.page = page;
+    await pageFixture.init(page);
     // Attach logger
-    Logger.attach(page);
-   
+    
 })
 
 After(async function ({pickle, result}) {

@@ -1,15 +1,11 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { pageFixture } from "../../../hooks/pageFixture";
-import { SellerRegistrationPage } from "../../../pages/seller_dashboard/SellerRegistrationPage";
 
-
-let sellerRegistrationPage: SellerRegistrationPage;
 let userData;
 
 Given('the Register As Seller form is displayed', async function () {
-    sellerRegistrationPage = new SellerRegistrationPage(pageFixture.page);
-    const isRegistrationFormDisplayed = await sellerRegistrationPage.validateRegisterFormDisplayed();
+    const isRegistrationFormDisplayed = await pageFixture.sellerRegistrationPage.validateRegisterFormDisplayed();
     expect(isRegistrationFormDisplayed).toBeTruthy();  
 });
 
@@ -31,23 +27,23 @@ When('the user fills in the registration form with the following data:', async f
 });
 
 Then('the fields accept the values', async function () {
-    const isValidationErrorsDisplayed = await sellerRegistrationPage.hasValidationErrors();
+    const isValidationErrorsDisplayed = await pageFixture.sellerRegistrationPage.hasValidationErrors();
     expect(isValidationErrorsDisplayed).toBeFalsy();  
 });
 
 When('the user clicks the Next button', async function () {
-    await sellerRegistrationPage.clickNextButton();
+    await pageFixture.sellerRegistrationPage.clickNextButton();
 });
 
 Then('the Select Vendor Group dropdown is displayed', async function () {
-    await sellerRegistrationPage.waitForVendorGroupSelect();
+    await pageFixture.sellerRegistrationPage.waitForVendorGroupSelect();
 });
 
 When('the user selects {string} in the Select Vendor Group dropdown', async function (value: string) {
     userData = {
         vendorGroup: value,
     };
-    await sellerRegistrationPage.selectAttributeGroup(value)
+    await pageFixture.sellerRegistrationPage.selectAttributeGroup(value)
     //await new Promise(resolve => setTimeout(resolve, 50000));
 });
 
@@ -59,8 +55,7 @@ When('the user fills in the {string} field with a unique value {string}', async 
     userData = {
         vatNo: value
     };
-    console.log(userData);
-    await sellerRegistrationPage.fillVatNo(userData.vatNo);
+    await pageFixture.sellerRegistrationPage.fillVatNo(userData.vatNo);
 });
 
 Then('the field accepts the value', async function () {
@@ -69,7 +64,7 @@ Then('the field accepts the value', async function () {
 });
 
 When('the user clicks the Create Account button', async function () {
-    await sellerRegistrationPage.clickCreateAccountButton();
+    await pageFixture.sellerRegistrationPage.clickCreateAccountButton();
 });
 
 Then('I receive the following emails:', async function (dataTable) {

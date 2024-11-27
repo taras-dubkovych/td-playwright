@@ -1,74 +1,47 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BasePage } from "../BasePage";
 import { faker } from '@faker-js/faker';
 
 export class SellerRegistrationPage extends BasePage {
   readonly page: Page;
 
+  readonly firstNameInput: Locator;
+  readonly lastNameInput: Locator;
+  readonly emailInput: Locator;
+  readonly shopUrlInput: Locator;
+  readonly passwordInput: Locator;
+  readonly confirmPasswordInput: Locator;
+  readonly showPasswordCheckbox: Locator;
+  readonly nextButton: Locator;
+  readonly vendorGroupSelect: Locator;
+  readonly backButton: Locator;
+  readonly vatNoInput: Locator;
+  readonly createAccountButton: Locator;
+  readonly registerSellerAccForm: Locator;
+  readonly validationErrMsgs: Locator;
+
   constructor(page: Page) {
     super(page);
     this.page = page;
+
+    this.firstNameInput = this.page.locator("#firstname");
+    this.lastNameInput = this.page.locator("#lastname");
+    this.emailInput = this.page.locator("#email_address");
+    this.shopUrlInput = this.page.locator("#profileurl");
+    this.passwordInput = this.page.locator("#password");
+    this.confirmPasswordInput = this.page.locator("#password-confirmation");
+    this.showPasswordCheckbox = this.page.getByRole('checkbox', { name: "show-password" });
+    this.nextButton = this.page.locator("button[title='Create an Account']");
+    this.vendorGroupSelect = this.page.locator("#attribute-group");
+    this.backButton = this.page.locator("#main");
+    this.vatNoInput = this.page.locator("#wkv_vat_no");
+    this.createAccountButton = this.page.locator("button[title='Create an Account']");
+    this.registerSellerAccForm = this.page.locator("#register-as-seller");
+    this.validationErrMsgs = this.page.locator('.mage-error');
   }
 
-  private get firstNameInput() {
-    return this.page.locator("#firstname");
-  }
-
-  private get lastNameInput() {
-    return this.page.locator("#lastname");
-  }
-
-  private get emailInput() {
-    return this.page.locator("#email_address");
-  }
-
-  private get shopUrlInput() {
-    return this.page.locator("#profileurl");
-  }
-
-  private get passwordInput() {
-    return this.page.locator("#password");
-  }
-
-  private get confirmPasswordInput() {
-    return this.page.locator("#password-confirmation");
-  }
-
-  private get showPasswordCheckbox() {
-    return this.page.getByRole('checkbox', {name: "show-password"});
-  }
-
-  private get nextButton() {
-    return this.page.locator("button[title='Create an Account']");
-  }
-
-  private get vendorGroupSelect() {
-    return this.page.locator("#attribute-group");
-  }
-
-  private get backButton() {
-    return this.page.locator("#main");
-  }
-
-  private get vatNoInput() {
-    return this.page.locator("#wkv_vat_no");
-  }
-
-  private get createAccountButton() {
-    return this.page.locator("button[title='Create an Account']");
-  }
-
-  private get registerSellerAccForm(){
-    return this.page.locator("#register-as-seller")
-  }
-
-  private get validationErrMsgs(){
-    return this.page.locator('.mage-error');
-  }
-
-  //---------------------------------------------------------------------------------------------
   async validateRegisterFormDisplayed() {
-    await this.registerSellerAccForm.waitFor({state: 'attached', timeout: 300000});
+    await this.registerSellerAccForm.waitFor({ state: 'attached', timeout: 300000 });
     return await this.registerSellerAccForm.isVisible();
   }
 
@@ -87,45 +60,43 @@ export class SellerRegistrationPage extends BasePage {
   async hasValidationErrors() {
     const count = await this.validationErrMsgs.count();
     return count > 0;
-}
+  }
 
-async waitForVendorGroupSelect(){
-  await this.vendorGroupSelect.waitFor();
-}
+  async waitForVendorGroupSelect() {
+    await this.vendorGroupSelect.waitFor();
+  }
 
-async selectAttributeGroup(value: string){
-  await this.vendorGroupSelect.selectOption({ label: value });
-}
+  async selectAttributeGroup(value: string) {
+    await this.vendorGroupSelect.selectOption({ label: value });
+  }
 
-async registerNewSelleraAccount(firstName: string, lastName: string, email: string, shopUrl: string, password: string) {
-      // Generate fake data for the fields
-  const userData = {
-      firstName: firstName,
-      lastName: faker.person.lastName(),
-      email: faker.internet.email(),
-      shopUrl: faker.internet.domainWord(),
-      password: faker.internet.password({length:12}), // Generate a secure password
-      vendorGroup: "Retail Seller", // Replace with a valid option from your application if required
-  };
+  async registerNewSellerAccount(firstName: string, lastName: string, email: string, shopUrl: string, password: string) {
+    const userData = {
+      firstName: firstName || faker.person.firstName(),
+      lastName: lastName || faker.person.lastName(),
+      email: email || faker.internet.email(),
+      shopUrl: shopUrl || faker.internet.domainWord(),
+      password: password || faker.internet.password({ length: 12 }), // Генерація пароля
+      vendorGroup: "Retail Seller", // Замінити на відповідну опцію за потреби
+    };
 
-  // Fill in the form using generated data
-  await this.firstNameInput.fill(userData.firstName);
-  await this.lastNameInput.fill(userData.lastName);
-  await this.emailInput.fill(userData.email);
-  await this.shopUrlInput.fill(userData.shopUrl);
-  await this.passwordInput.fill(userData.password);
-  await this.confirmPasswordInput.fill(userData.password);
-  await this.nextButton.click();
-  // Optionally check the "show password" checkbox
-  await this.showPasswordCheckbox.check();
+    // Заповнення форми
+    await this.firstNameInput.fill(userData.firstName);
+    await this.lastNameInput.fill(userData.lastName);
+    await this.emailInput.fill(userData.email);
+    await this.shopUrlInput.fill(userData.shopUrl);
+    await this.passwordInput.fill(userData.password);
+    await this.confirmPasswordInput.fill(userData.password);
+    await this.showPasswordCheckbox.check();
+    await this.nextButton.click();
 
-  // Select vendor group from dropdown
-  await this.vendorGroupSelect.selectOption(userData.vendorGroup);
+    // Вибір групи продавців
+    await this.vendorGroupSelect.selectOption(userData.vendorGroup);
 
-  // Submit the form
-  await this.createAccountButton.click();
+    // Надсилання форми
+    await this.createAccountButton.click();
 
-  // Wait for confirmation or next step
-  await this.page.waitForSelector('text=Account created successfully');
-}
+    // Очікування підтвердження
+    await this.page.waitForSelector('text=Account created successfully');
+  }
 }
