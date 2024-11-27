@@ -1,6 +1,7 @@
 Feature: Register a new seller account
   As a user, I want to register as a seller on the marketplace and verify the registration process.
 
+  @smoke
   Scenario: Successfully register as a seller
     Given the user is on the seller login page
     And the "Marketplace Vendor Login" page is displayed

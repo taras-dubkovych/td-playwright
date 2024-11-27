@@ -71,32 +71,14 @@ export class SellerRegistrationPage extends BasePage {
   }
 
   async registerNewSellerAccount(firstName: string, lastName: string, email: string, shopUrl: string, password: string) {
-    const userData = {
-      firstName: firstName || faker.person.firstName(),
-      lastName: lastName || faker.person.lastName(),
-      email: email || faker.internet.email(),
-      shopUrl: shopUrl || faker.internet.domainWord(),
-      password: password || faker.internet.password({ length: 12 }), // Генерація пароля
-      vendorGroup: "Retail Seller", // Замінити на відповідну опцію за потреби
-    };
-
-    // Заповнення форми
-    await this.firstNameInput.fill(userData.firstName);
-    await this.lastNameInput.fill(userData.lastName);
-    await this.emailInput.fill(userData.email);
-    await this.shopUrlInput.fill(userData.shopUrl);
-    await this.passwordInput.fill(userData.password);
-    await this.confirmPasswordInput.fill(userData.password);
-    await this.showPasswordCheckbox.check();
-    await this.nextButton.click();
-
-    // Вибір групи продавців
-    await this.vendorGroupSelect.selectOption(userData.vendorGroup);
-
-    // Надсилання форми
-    await this.createAccountButton.click();
-
-    // Очікування підтвердження
-    await this.page.waitForSelector('text=Account created successfully');
+    
+    await this.firstNameInput.fill(firstName);
+    await this.lastNameInput.fill(lastName);
+    await this.emailInput.fill(email);
+    await this.shopUrlInput.fill(shopUrl);
+    await this.passwordInput.fill(password);
+    await this.confirmPasswordInput.fill(password);
+    // await this.showPasswordCheckbox.check();
+    // await this.nextButton.click();
   }
 }
