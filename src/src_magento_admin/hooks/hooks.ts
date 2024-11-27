@@ -19,7 +19,7 @@ Before( async function () {
     page = await browser.newPage();
     await pageFixture.init(page);
     // Attach logger
-    
+    Logger.attach(page);
 })
 
 After(async function ({pickle, result}) {
