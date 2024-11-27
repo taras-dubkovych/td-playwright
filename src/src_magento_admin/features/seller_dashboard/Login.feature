@@ -1,4 +1,4 @@
-Feature: Verify The Seller login functionality
+Feature: Verify the Seller login functionality
 
   Scenario: Seller admin user is able to log-in into existing Seller Dashboard, C5
     Given the user is on the seller login page

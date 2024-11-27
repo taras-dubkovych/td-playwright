@@ -1,5 +1,4 @@
-Feature: Register a new seller account
-  As a user, I want to register as a seller on the marketplace and verify the registration process.
+Feature: Verify the registration processe for the Seller
 
   @smoke
   Scenario: Successfully register as a seller
