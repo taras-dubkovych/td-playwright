@@ -14,7 +14,7 @@ Feature: Verify the registration processe for the Seller
     When the user clicks the Next button
     When the user selects "Retail Seller" in the Select Vendor Group dropdown
     Then the Vat No field is displayed
-    When the user fills in the "Vat No" field with a unique value "8796756754"
+    When the user fills in the Vat No field with a unique value "8796756754"
     When the user clicks the Create Account button
     Then the user is redirected to the seller dashboard page
     Then the user verifies the registration success message

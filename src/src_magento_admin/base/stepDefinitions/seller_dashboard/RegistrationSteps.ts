@@ -42,7 +42,7 @@ Then('the Vat No field is displayed', async function () {
     expect(pageFixture.sellerRegistrationPage.vatNoInput).toBeVisible();
 });
 
-When('the user fills in the {string} field with a unique value {string}', async function (fieldName: string, value: string) {
+When('the user fills in the Vat No field with a unique value {string}', async function (value: string) {
     this.setUser({ vatNo: value });
     await pageFixture.sellerRegistrationPage.fillVatNo(value);
     const enteredVatNo = await pageFixture.page.inputValue('#wkv_vat_no');
@@ -53,9 +53,3 @@ When('the user fills in the {string} field with a unique value {string}', async 
 When('the user clicks the Create Account button', async function () {
     await pageFixture.sellerRegistrationPage.clickCreateAccountButton();
 });
-
-// Then('I receive the following emails:', async function (dataTable) {
-//     const expectedEmails = dataTable.rawTable.flat(); // Extract expected email types
-//     // Validate emails (integration with an email API or mock data would be needed)
-//     console.log('Received Emails:', expectedEmails);
-// });
