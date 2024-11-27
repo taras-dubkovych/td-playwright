@@ -69,5 +69,4 @@ class CustomWorld {
     }
   }
   
-
 setWorldConstructor(CustomWorld);

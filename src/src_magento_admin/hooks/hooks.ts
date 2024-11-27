@@ -18,7 +18,6 @@ Before( async function () {
     context = await browser.newContext();
     page = await browser.newPage();
     await pageFixture.init(page);
-    // Attach logger
     Logger.attach(page);
 })
 

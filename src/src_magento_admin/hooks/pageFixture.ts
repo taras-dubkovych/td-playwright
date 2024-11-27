@@ -1,4 +1,3 @@
-// pageFixture.ts
 import { Page } from '@playwright/test';
 //Magento page objects
 import { AdminLoginPage } from '../pages/magento_admin/AdminLoginPage';

@@ -1,10 +1,6 @@
 import { Page } from '@playwright/test';
 
 export abstract class BasePage {
-  //protected testController;
- // abstract initElementLocators();
-  //protected logger;
-  
   readonly page: Page;
 
   constructor(page: Page) {

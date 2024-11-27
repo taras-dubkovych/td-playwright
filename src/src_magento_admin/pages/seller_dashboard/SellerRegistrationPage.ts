@@ -1,6 +1,5 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from "../BasePage";
-import { faker } from '@faker-js/faker';
 
 export class SellerRegistrationPage extends BasePage {
   readonly page: Page;
@@ -78,7 +77,5 @@ export class SellerRegistrationPage extends BasePage {
     await this.shopUrlInput.fill(shopUrl);
     await this.passwordInput.fill(password);
     await this.confirmPasswordInput.fill(password);
-    // await this.showPasswordCheckbox.check();
-    // await this.nextButton.click();
   }
 }

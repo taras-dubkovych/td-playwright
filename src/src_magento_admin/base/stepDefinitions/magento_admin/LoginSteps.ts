@@ -9,9 +9,9 @@ Given('the user is on the Magento login page', async function () {
 });
 
 When('the user logins with valid credentials', async function () {
-
+    //TODO
 });
 
 Then('Magento dashboard is opened', async function () {
-
+    //TODO
 });

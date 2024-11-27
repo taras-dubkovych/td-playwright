@@ -13,7 +13,6 @@ export class AdminLoginPage extends BasePage {
     super(page);
     this.page = page;
 
-    // Ініціалізація селекторів у конструкторі
     this.usernameInput = this.page.locator('#username');
     this.passwordInput = this.page.locator('#login');
     this.loginButton = this.page.locator('button.action-login');
