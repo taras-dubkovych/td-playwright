@@ -20,7 +20,7 @@ When('the user logs in as {string}', async function (userKey: string) {
 });
 
 Then('the user should be redirected to the Seller Dashboard', async function () {
-    const isDashboardValid = await pageFixture.dashboardPage.validateDashboard();
+    const isDashboardValid = await pageFixture.sellerDashboardPage.validateDashboard();
     expect(isDashboardValid).toBeTruthy();  
   });
 

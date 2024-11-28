@@ -1,6 +1,6 @@
 Feature: Verify the registration processe for the Seller
 
-  @smoke
+  @regression
   Scenario: Successfully register as a seller
     Given the user is on the seller login page
     Then the user clicks on registration link to seller registration form

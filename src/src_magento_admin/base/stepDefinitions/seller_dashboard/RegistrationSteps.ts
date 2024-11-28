@@ -45,9 +45,8 @@ Then('the Vat No field is displayed', async function () {
 When('the user fills in the Vat No field with a unique value {string}', async function (value: string) {
     this.setUser({ vatNo: value });
     await pageFixture.sellerRegistrationPage.fillVatNo(value);
-    const enteredVatNo = await pageFixture.page.inputValue('#wkv_vat_no');
-    const userInfo = this.getUserInfo();
-    expect(enteredVatNo).toEqual(userInfo.vatNo);
+    const enteredVatNo = await pageFixture.sellerRegistrationPage.vatNoInput.inputValue();
+    expect(enteredVatNo).toEqual(value);
 });
 
 When('the user clicks the Create Account button', async function () {

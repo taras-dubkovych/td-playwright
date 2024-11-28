@@ -11,7 +11,8 @@
     "posttest": "npm run generate:reports ",
     "execute:script": "npx playwright test --project=chromium --workers=2",
     "test": "npm run execute:script || npm run posttest",
-    "testC": "cucumber-js test/features/magento_admin --tags @smoke"
+    "testSmoke": "cucumber-js test/features/magento_admin --tags @smoke",
+    "testRegression": "cucumber-js test/features/magento_admin --tags @regression"
   },
   "keywords": [],
   "author": "Taras Dubkovych",

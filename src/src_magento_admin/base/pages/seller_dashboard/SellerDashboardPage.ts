@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from "../BasePage";
 
-export class DashboardPage extends BasePage {
+export class SellerDashboardPage extends BasePage {
   readonly page: Page;
 
   readonly marketPlaceDashboardLabel1: Locator;
