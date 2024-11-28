@@ -9,7 +9,7 @@ Feature: Verify the registration processe for the Seller
       | First_Name       | John              |
       | Last_Name        | Doe               |
       | Email            | john.doe@test.com |
-      | Shop_URL         | johndoe33           |
+      | Shop_URL         | johndoe33         |
       | Password         | SecurePass123     |
     When the user clicks the Next button
     When the user selects "Retail Seller" in the Select Vendor Group dropdown
