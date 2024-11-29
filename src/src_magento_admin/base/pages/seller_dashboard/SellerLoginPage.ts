@@ -1,5 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from "../BasePage";
+import { getUserByKey } from '../../../utils/Utils';
 
 export class SellerLoginPage extends BasePage {
   readonly page: Page;
@@ -21,9 +22,13 @@ export class SellerLoginPage extends BasePage {
     this.registrationLink = this.page.locator("a[href$='marketplace/']");
   }
 
-  async login(username: string, password: string) {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
+  async login(userKey: string) {
+    const user = getUserByKey(userKey); // Retrieve user details
+    if (!user) {
+        throw new Error(`User "${userKey}" is not defined.`);
+    }
+    await this.usernameInput.fill(user.email);
+    await this.passwordInput.fill(user.password);
     await this.loginButton.waitFor({ state: "visible" });
     await this.loginButton.click();
   }

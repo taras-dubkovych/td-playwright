@@ -24,7 +24,7 @@ export class SellerDashboardPage extends BasePage {
   }
 
   async verifyDashboardIsVisible() {
-    await this.marketPlaceDashboardLabel.waitFor({ state: 'attached', timeout: 400000 });
+    await this.marketPlaceDashboardLabel.waitFor({ state: 'attached', timeout: 40000 });
     return await this.marketPlaceDashboardLabel.isVisible();
   }
 

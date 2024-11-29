@@ -1,0 +1,46 @@
+{
+    "simple_products": [
+      {
+        "name": "Simple Product 1",
+        "price": "10.99",
+        "sku": "SP001"
+      },
+      {
+        "name": "Simple Product 2",
+        "price": "15.49",
+        "sku": "SP002"
+      }
+    ],
+    "virtual_products": [
+      {
+        "name": "Virtual Product 1",
+        "price": "8.99",
+        "sku": "VP001"
+      },
+      {
+        "name": "Virtual Product 2",
+        "price": "12.49",
+        "sku": "VP002"
+      }
+    ],
+    "configurable_products": [
+      {
+        "name": "Configurable Product 1",
+        "price": "20.00",
+        "sku": "CP001",
+        "variations": [
+          {
+            "name": "Variation 1",
+            "price": "22.00",
+            "sku": "CP001-V1"
+          },
+          {
+            "name": "Variation 2",
+            "price": "23.00",
+            "sku": "CP001-V2"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,7 +1,8 @@
 import { After, AfterAll, Before, BeforeAll, Status, setDefaultTimeout } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
 import { pageFixture } from "./PageFixture";
-import { Logger } from '../../src_magento_admin/helpers/Logger';
+import { createLogger } from "winston";
+import { options } from "../utils/logger";
 
 let browser: Browser;
 let page: Page;
@@ -10,15 +11,17 @@ setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function () {
     console.log('Test suite initialization started');
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: false });
     console.log('Browser launched');
 })
 
-Before( async function () {
+Before( async function ({pickle}) {
+    const scenarioName = pickle.name + pickle.id;
     context = await browser.newContext();
     page = await browser.newPage();
     await pageFixture.init(page);
-    Logger.attach(page);
+    pageFixture.logger = createLogger(options(scenarioName));
+    pageFixture.logger.info(`Execution started for test: ${pickle.name}`)
 })
 
 After(async function ({pickle, result}) {
@@ -27,10 +30,13 @@ After(async function ({pickle, result}) {
         const image = await pageFixture.page.screenshot({path: `.test-result/screenshot/${pickle.name}.png`, type: "png"});
         await this.attach(image, "image/png")
     }
+    pageFixture.logger.info(`Execution finished for test: ${pickle.name} with status: ${result?.status}`)
     await page.close();
     await context.close();
 })
 
 AfterAll(async function () {
+    pageFixture.logger.info(`The test suit execution is finished`)
     await browser.close();
+    pageFixture.logger.close();
 })

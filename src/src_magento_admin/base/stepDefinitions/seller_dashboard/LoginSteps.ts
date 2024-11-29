@@ -2,8 +2,7 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { config } from '../../../utils/config';
 import { pageFixture } from "../../../hooks/PageFixture";
-import * as users from '../../../data/users.json';
-import { clickAndSwitchToNewTab } from "../../../utils/utils"
+import { clickAndSwitchToNewTab } from "../../../utils/Utils"
 import * as Constants from "../../Constants/constants"
 
 Given('the user is on the seller login page', async function () {
@@ -12,11 +11,7 @@ Given('the user is on the seller login page', async function () {
 });
 
 When('the user logs in as {string}', async function (userKey: string) {
-    const user = users["valid_user"];
-    if (!user) {
-      throw new Error(`User "${userKey}" is not defined in the JSON file.`);
-    }
-    await pageFixture.sellerLoginPage.login(user.email, user.password);
+    await pageFixture.sellerLoginPage.login(userKey);
 });
 
 Then('the user should be redirected to the Seller Dashboard', async function () {
