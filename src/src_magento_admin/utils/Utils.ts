@@ -1,4 +1,4 @@
-import { pageFixture } from "../hooks/pageFixture";
+import { pageFixture } from "../hooks/PageFixture";
 
 export const clickAndSwitchToNewTab = async (selector: string) => {
     const [newTab] = await Promise.all([

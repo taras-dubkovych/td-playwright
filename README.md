@@ -22,7 +22,7 @@ npx playwright codegen -o ./tests/codeGenAuto.spec.ts
 npx playwright codegen --device="iPhone 11 Pro"
 
 <!-- To install cucumber -->
-npm i -D@cucumber/cucumber
+npm i -D @cucumber/cucumber
 
 <!-- To install ts-node -->
 npm i -D ts-node

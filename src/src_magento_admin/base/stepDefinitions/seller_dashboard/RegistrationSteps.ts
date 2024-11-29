@@ -1,6 +1,6 @@
 import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { pageFixture } from "../../../hooks/pageFixture";
+import { pageFixture } from "../../../hooks/PageFixture";
 
 When('the user fills in the registration form with the following data:', async function (dataTable) {
     const data = dataTable.rowsHash();

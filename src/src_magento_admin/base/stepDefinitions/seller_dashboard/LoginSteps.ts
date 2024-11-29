@@ -1,9 +1,9 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { config } from '../../../utils/config';
-import { pageFixture } from "../../../hooks/pageFixture";
+import { pageFixture } from "../../../hooks/PageFixture";
 import * as users from '../../../data/users.json';
-import { clickAndSwitchToNewTab } from "../../../utils/Utils"
+import { clickAndSwitchToNewTab } from "../../../utils/utils"
 import * as Constants from "../../Constants/constants"
 
 Given('the user is on the seller login page', async function () {

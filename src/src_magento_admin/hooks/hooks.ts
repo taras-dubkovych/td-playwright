@@ -1,6 +1,6 @@
 import { After, AfterAll, Before, BeforeAll, Status, setDefaultTimeout } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium } from "@playwright/test";
-import { pageFixture } from "./pageFixture";
+import { pageFixture } from "./PageFixture";
 import { Logger } from '../../src_magento_admin/helpers/Logger';
 
 let browser: Browser;
@@ -10,7 +10,7 @@ setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function () {
     console.log('Test suite initialization started');
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
     console.log('Browser launched');
 })
 

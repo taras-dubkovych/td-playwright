@@ -5,4 +5,4 @@ services:
     container_name: playwright-docker-container
     volumes:
       - ./:/app
-    command: npm run test
+    command: npm run testSmoke
