@@ -1,5 +1,6 @@
 import { pageFixture } from "../hooks/PageFixture";
 import users from '../data/users.json';
+import products from '../data/products.json';
 export const clickAndSwitchToNewTab = async (selector: string) => {
     const [newTab] = await Promise.all([
         pageFixture.page.waitForEvent('popup'),
@@ -18,4 +19,12 @@ export function getUserByKey(userKey: string) {
         throw new Error(`User "${userKey}" is not defined in the JSON file.`);
     }
     return user;
+}
+
+export function getProductByKey(productKey: string) {
+    const product = products[productKey];
+    if (!product) {
+        throw new Error(`User "${productKey}" is not defined in the JSON file.`);
+    }
+    return product;
 }

@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { BasePage } from "../BasePage";
-import { getUserByKey } from '../../../utils/Utils';
+import { getUserByKey } from '../../../utils/utils';
 
 export class SellerLoginPage extends BasePage {
   readonly page: Page;

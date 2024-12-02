@@ -11,7 +11,7 @@
         ],
         "requireModule": ["ts-node/register"],
         "format": ["html:test_result/report/cucumber-report.html"],
-        "parallel": 1,
+        "parallel": 3,
         "tags": "@smoke or @regression"
     }
 }
