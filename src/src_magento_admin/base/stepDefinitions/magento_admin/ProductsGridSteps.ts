@@ -1,7 +1,7 @@
 import { Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { pageFixture } from "../../../hooks/PageFixture";
-import * as Constants from "../../Constants/constants"
+import * as Constants from "../../constants/constants"
 
 Then('', async function () {
     const dashboardTitle = await pageFixture.magentoDashboardPage.dashboardTitle.textContent();
@@ -25,6 +25,15 @@ Then('', async function () {
   });
 
   Then('the {string} product should appear in the product grid', async function (string) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
+    
+    // Wait for the page to load and spinner to disappear
+    await pageFixture.page.waitForLoadState();
+    await pageFixture.productsGridPage.waitSpinnerToDissapear();
+    const productInfo = this.getProductsInfo();
+
+    await pageFixture.productsGridPage.searchProduct(productInfo[0].sku);
+    await pageFixture.productsGridPage.scrollToPageTop();
+    const isProductVisible = await pageFixture.productsGridPage.isProductVisible(productInfo[0].name);
+    expect(isProductVisible).toBeTruthy();
+    await new Promise(resolve => setTimeout(resolve, 5000));
   });

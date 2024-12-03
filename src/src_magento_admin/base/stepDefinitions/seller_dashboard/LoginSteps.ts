@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 import { config } from '../../../utils/config';
 import { pageFixture } from "../../../hooks/PageFixture";
 import { clickAndSwitchToNewTab } from "../../../utils/utils"
-import * as Constants from "../../Constants/constants"
+import * as Constants from "../../constants/constants"
 
 Given('the user is on the seller login page', async function () {
     await pageFixture.sellerLoginPage.navigateToUrl(config.sellerLoginURL);

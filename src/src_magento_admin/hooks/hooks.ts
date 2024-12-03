@@ -16,12 +16,20 @@ BeforeAll(async function () {
 })
 
 Before( async function ({pickle}) {
-    const scenarioName = pickle.name + pickle.id;
+    const workerIndex = process.env.TEST_WORKER_INDEX || 0; // Provided by test runner
+    const totalWorkers = process.env.TEST_WORKER_TOTAL || 1;
+
+    console.log("workerIndex", workerIndex)
+    console.log("totalWorkers", totalWorkers)
+
+    const scenarioName = `${pickle.name.replace(/\s+/g, '_')}_${process.pid}`;
+    console.log("ickle.id", pickle.id)
     context = await browser.newContext();
-    page = await browser.newPage();
+    page = await context.newPage();
+    // const scenarioIndex = pickle.id % productPool.length;
     await pageFixture.init(page);
     pageFixture.logger = createLogger(options(scenarioName));
-    pageFixture.logger.info(`Execution started for test: ${pickle.name}`)
+    pageFixture.logger.info(`Execution started for test: ${scenarioName}`)
 })
 
 After(async function ({pickle, result}) {

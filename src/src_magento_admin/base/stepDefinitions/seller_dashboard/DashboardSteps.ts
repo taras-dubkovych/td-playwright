@@ -1,7 +1,7 @@
 import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { pageFixture } from "../../../hooks/PageFixture";
-import * as Constants from '../../Constants/constants'
+import * as Constants from '../../constants/constants'
 
 Given('the user is redirected to the seller dashboard page', async function () {
     const isDashboardDisplayed = await pageFixture.sellerDashboardPage.verifyDashboardIsVisible();

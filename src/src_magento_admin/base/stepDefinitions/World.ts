@@ -1,7 +1,7 @@
 import { setWorldConstructor } from '@cucumber/cucumber';
 
 interface Context {
-  product: Array<{ name: string; price: number }>;
+  products: Array<{ name: string; price: number; sku: string }>;
   address: { street: string; city: string; zip: string } | null;
   orderId: string | null;
   userInfo:{ 
@@ -19,19 +19,19 @@ class CustomWorld {
   
     constructor() {
       this.context = {
-        product: [],
+        products: [],
         address: null,
         orderId: null,
         userInfo: null,
       };
     }
   
-    addToCart(product: { name: string; price: number }) {
-      this.context.product.push(product);
+    setProductsInfo(products: { name: string; price: number; sku: string }) {
+      this.context.products.push(products);
     }
 
-    getProductInfo (){
-        return this.context.product;
+    getProductsInfo (){
+        return this.context.products;
     }
   
     setAddress(address: { street: string; city: string; zip: string }) {

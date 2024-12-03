@@ -10,9 +10,10 @@ Scenario: Admin is able to create a new Simple product in admin with needed attr
 Then the user navigates to "products" page
 Then the user selects to create "simple" product
 Then the "New Product" form should be displayed
-Then the user fills in the required fields with the valid data
+Then the user fills in the required fields with the valid data for "simple_products"
 And the user saves the product
 Then the product should be successfully created
+Then the user navigates to "products" page
 And the "simple" product should appear in the product grid
 
 @smoke
@@ -20,7 +21,7 @@ Scenario: Admin is able to create a new Simple product in admin with needed attr
 Then the user navigates to "products" page
 Then the user selects to create "simple" product
 Then the "New Product" form should be displayed
-Then the user fills in the required fields with the valid data
+Then the user fills in the required fields with the valid data for "simple_products"
 And the user saves the product
 Then the product should be successfully created
 And the "simple" product should appear in the product grid
@@ -30,17 +31,17 @@ Scenario: Admin is able to create a new Simple product in admin with needed attr
 Then the user navigates to "products" page
 Then the user selects to create "simple" product
 Then the "New Product" form should be displayed
-Then the user fills in the required fields with the valid data
+Then the user fills in the required fields with the valid data for "simple_products"
 And the user saves the product
 Then the product should be successfully created
 And the "simple" product should appear in the product grid
 
-@smoke
-Scenario: Admin is able to create a new Simple product in admin with needed attributes, C12255
-Then the user navigates to "products" page
-Then the user selects to create "simple" product
-Then the "New Product" form should be displayed
-Then the user fills in the required fields with the valid data
-And the user saves the product
-Then the product should be successfully created
-And the "simple" product should appear in the product grid
+# @smoke
+# Scenario: Admin is able to create a new Simple product in admin with needed attributes, C12255
+# Then the user navigates to "products" page
+# Then the user selects to create "simple" product
+# Then the "New Product" form should be displayed
+# Then the user fills in the required fields with the valid data
+# And the user saves the product
+# Then the product should be successfully created
+# And the "simple" product should appear in the product grid

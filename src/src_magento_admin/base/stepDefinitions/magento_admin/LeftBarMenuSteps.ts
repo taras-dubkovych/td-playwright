@@ -1,7 +1,7 @@
 import { Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { pageFixture } from "../../../hooks/PageFixture";
-import * as Constants from "../../Constants/constants"
+import * as Constants from "../../constants/constants"
 
 Then('the user navigates to {string} page', async function (pageName) {
     switch (pageName.toLowerCase()) {
