@@ -16,6 +16,7 @@ BeforeAll(async function () {
 })
 
 Before( async function ({pickle}) {
+    await page.context().tracing.start({ screenshots: true, snapshots: true });
     const workerIndex = process.env.TEST_WORKER_INDEX || 0; // Provided by test runner
     const totalWorkers = process.env.TEST_WORKER_TOTAL || 1;
 
@@ -35,8 +36,11 @@ Before( async function ({pickle}) {
 After(async function ({pickle, result}) {
     //Screenshot only for failure
     if(result?.status == Status.FAILED){
+        await page.context().tracing.stop({ path: `trace/${pickle.name.replace(/\s+/g, '_')}.zip` });
         const image = await pageFixture.page.screenshot({path: `.test-result/screenshot/${pickle.name}.png`, type: "png"});
         await this.attach(image, "image/png")
+    } else {
+        await page.context().tracing.stop();
     }
     pageFixture.logger.info(`Execution finished for test: ${pickle.name} with status: ${result?.status}`)
     await page.close();
